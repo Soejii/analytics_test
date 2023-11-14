@@ -12,6 +12,7 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -19,7 +20,24 @@ class _MainPageState extends State<MainPage> {
             'Change to secondary screen',
             style: GoogleFonts.poppins(
                 fontSize: 24, fontWeight: FontWeight.bold, color: Colors.black),
-          )
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          ElevatedButton(
+              onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => SecondScreen(),
+                    ),
+                  ),
+              child: Text(
+                'Change to secondary screen',
+                style: GoogleFonts.poppins(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black),
+              ))
         ],
       ),
     );
