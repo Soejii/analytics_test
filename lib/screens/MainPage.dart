@@ -13,6 +13,14 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.blue,
+        title: Text(
+          'Firebase Analytics',
+          style: GoogleFonts.poppins(
+              fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
+        ),
+      ),
       backgroundColor: Colors.white,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
