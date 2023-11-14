@@ -1,22 +1,22 @@
-import 'package:analytics_test/screens/ThirdScreen.dart';
+import 'package:analytics_test/screens/MainPage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class SecondScreen extends StatefulWidget {
-  const SecondScreen({super.key});
+class ThirdScreen extends StatefulWidget {
+  const ThirdScreen({super.key});
 
   @override
-  State<SecondScreen> createState() => _SecondScreenState();
+  State<ThirdScreen> createState() => _ThirdScreenState();
 }
 
-class _SecondScreenState extends State<SecondScreen> {
+class _ThirdScreenState extends State<ThirdScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
         title: Text(
-          'Second Screen',
+          'Third Screen',
           style: GoogleFonts.poppins(
               fontSize: 24, fontWeight: FontWeight.bold, color: Colors.black),
         ),
@@ -37,14 +37,13 @@ class _SecondScreenState extends State<SecondScreen> {
             height: 20,
           ),
           ElevatedButton(
-              onPressed: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const ThirdScreen(),
-                    ),
-                  ),
+              onPressed: () => Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const MainPage(),
+                  )),
               child: Text(
-                'Change to third screen',
+                'Change to main screen',
                 style: GoogleFonts.poppins(
                     fontSize: 12,
                     fontWeight: FontWeight.bold,
