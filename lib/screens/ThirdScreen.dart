@@ -1,4 +1,5 @@
 import 'package:analytics_test/screens/MainPage.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -10,6 +11,20 @@ class ThirdScreen extends StatefulWidget {
 }
 
 class _ThirdScreenState extends State<ThirdScreen> {
+  FirebaseAnalytics analytics = FirebaseAnalytics.instance;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getData();
+  }
+
+  getData() async {
+    await analytics
+        .logEvent(name: 'screen', parameters: {'screen_name': "third_screen"});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -1,4 +1,5 @@
 import 'package:analytics_test/screens/ThirdScreen.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -10,6 +11,19 @@ class SecondScreen extends StatefulWidget {
 }
 
 class _SecondScreenState extends State<SecondScreen> {
+  FirebaseAnalytics analytics = FirebaseAnalytics.instance;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getData();
+  }
+
+  getData() async {
+    await analytics.logScreenView(screenName: 'second_screen');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,12 +51,17 @@ class _SecondScreenState extends State<SecondScreen> {
             height: 20,
           ),
           ElevatedButton(
-              onPressed: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const ThirdScreen(),
-                    ),
+              onPressed: () async {
+                await analytics.logEvent(
+                    name: 'screen',
+                    parameters: {'screen_name': "third_screen"});
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const ThirdScreen(),
                   ),
+                );
+              },
               child: Text(
                 'Change to third screen',
                 style: GoogleFonts.poppins(
